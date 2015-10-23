@@ -1,5 +1,3 @@
-#include <unistd.h>
-#include <stdio.h>
 void ft_strcat(char *dest, const char *src, size_t n)
 {
 	int i;
@@ -14,11 +12,4 @@ void ft_strcat(char *dest, const char *src, size_t n)
 		dest[j + i] = src[i];
 		i++;
 	}
-}
-int main()
-{
-	char a[] = "Ana are mere";
-	char b[] = "si pere";
-	ft_strcat(a, b, 10);
-	printf("%s\n", a);
 }
