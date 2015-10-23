@@ -1,4 +1,4 @@
-void ft_strncat(char *dest, const char *src, int n)
+char *ft_strncat(char *dest, const char *src, int n)
 {
         int i;
         int j;
@@ -12,5 +12,6 @@ void ft_strncat(char *dest, const char *src, int n)
                 dest[j + i] = src[i];
                 i++;
        		n--;
-	 }
+	}
+	return (dest);
 }
