@@ -1,17 +1,19 @@
-void ft_strlcat(char *dest, const char *src, int n)
+unsigned long	ft_strlcat(char * restrict dst, const char * restrict src, unsigned long size)
 {
-        int i;
-        int j;
-
+       unsigned int i;
+       unsigned int j;
         i = 0;
         j = 0;
-        while (dest[j] != '\0')
+        while (dst[j] != '\0')
                 j++;
-	n -= j + 1;
-        while (src[i] != '\0' && n > 0)
+	size -= j + 1;
+        while (src[i] != '\0')
         {
-                dest[j + i] = src[i];
+       		if (size > 0)
+	         dst[j] = src[i];
                 i++;
-                n--;
+		j++;
+                size--;
          }
+	return (j);
 }
