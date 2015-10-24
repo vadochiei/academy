@@ -1,4 +1,4 @@
 void ft_putnbr(int n)
 {
-	write(1, &n, 1);
+	write(2, &n, 1);
 }
