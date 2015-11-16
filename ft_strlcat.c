@@ -1,3 +1,5 @@
+#include "libft.h"
+
 unsigned long	ft_strlcat(char * restrict dst, const char * restrict src, unsigned long size)
 {
        unsigned int i;

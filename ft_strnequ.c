@@ -1,3 +1,5 @@
+#include "libft.h"
+
 int ft_strnequ(char const *s1, char const *s2, int n)
 {
 	int i;

@@ -1,3 +1,5 @@
+#include "libft.h"
+
 char *ft_strnstr(char *big, char *little, unsigned long n)
 {
         unsigned long i;
