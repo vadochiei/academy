@@ -3,10 +3,9 @@ ME = libft.a
 	UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
 	SHELL = /bin/zsh
-	else
+else
 	SHELL = /bin/bash
-	endif
-
+endif
 	CC = cc
 	CFLAGS = -ansi -pedantic -Wall -Wextra -Werror
 	SRC =	ft_atoi.c \
@@ -53,15 +52,17 @@ all: $(NAME)
 	$(NAME):
 	@$(CC) $(CFLAGS) -c $? $(SRC)
 	@ar rc $(NAME) $? $(OBJ)
-@ranlib $(NAME)
+	@ranlib $(NAME)
 	@echo "\033[32mBuilt library.\033[0m"
 
-	clean:
-@/bin/rm -f $(OBJ)
+
+clean:
+	@/academy/rm -f $(OBJ)
 	@echo "\033[32mCleaned up object files.\033[0m"
 
-	fclean: clean
-@/bin/rm $(NAME)
+fclean: clean
+	@/academy/rm $(NAME)
 	@echo "\033[32mCleaned up compiled files.\033[0m"
 
-	re: fclean all
+re: fclean all
+
