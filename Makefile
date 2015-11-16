@@ -1,142 +1,67 @@
 ME = libft.a
 
-SRC =	atoi.c		\
-		bzero.c		\
-		isalnum.c	\
-		isalpha.c	\
-		isascii.c	\
-		isdigit.c	\
-		isprint.c	\
-		itoa.c		\
-		lstadd.c	\
-		lstdel.c	\
-		lstdelone.c	\
-		lstiter.c	\
-		lstmap.c	\
-		lstnew.c	\
-		memalloc.c	\
-		memccpy.c	\
-		memchr.c	\
-		memcmp.c	\
-		memcpy.c	\
-		memdel.c	\
-		memmove.c	\
-		memset.c	\
-		putchar.c	\
-		putchar_fd.c\
-		putendl.c	\
-		putendl_fd.c\
-		putnbr.c	\
-		putnbr_fd.c	\
-		putstr.c	\
-		putstr_fd.c	\
-		strcat.c	\
-		strchr.c	\
-		strcmp.c	\
-		strcpy.c	\
-		strcrl.c	\
-		strdel.c	\
-		strdup.c	\
-		strequ.c	\
-		striter.c	\
-		striteri.c	\
-		strjoin.c	\
-		strlcat.c	\
-		strlen.c	\
-		strmap.c	\
-		strmapi.c	\
-		strncat.c	\
-		strncmp.c	\
-		strncpy.c	\
-		strnequ.c	\
-		strnew.c	\
-		strnstr.c	\
-		strrchr.c	\
-		strsplit.c	\
-		strstr.c	\
-		strsub.c	\
-		strtrim.c	\
-		tolower.c	\
-		toupper.c	\
-		strappend.c
+	UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	SHELL = /bin/zsh
+	else
+	SHELL = /bin/bash
+	endif
 
-HEAD = ./includes
+	CC = cc
+	CFLAGS = -ansi -pedantic -Wall -Wextra -Werror
+	SRC =	ft_atoi.c \
+		ft_bzero.c \
+		ft_itoa.c \
+		ft_mem{alloc,ccpy,chr,cmp,cpy,del,move,set}.c \
+		ft_put{char,char_fd,endl,endl_fd,nbr,nbr_fd,str,str_fd}.c \
+		ft_strcat.c \
+		ft_strchr.c \
+		ft_strclr.c \
+		ft_strcmp.c \
+		ft_strcpy.c \
+		ft_strdel.c \
+		ft_strdup.c \
+		ft_strequ.c \
+		ft_stris{alpha,lower,print,upper}.c \
+		ft_str{iter,iteri}.c \
+		ft_strjoin.c \
+		ft_strlcat.c \
+		ft_strlen.c \
+		ft_strlowcase.c \
+		ft_strupcase.c \
+		ft_str{map,mapi}.c \
+		ft_strncat.c \
+		ft_strncmp.c \
+		ft_strncpy.c \
+		ft_strndup.c \
+		ft_strnequ.c \
+		ft_strnew.c \
+		ft_strnstr.c \
+		ft_strrchr.c \
+		ft_strsplit.c \
+		ft_strstr.c \
+		ft_strsub.c \
+		ft_strtrim.c \
+		ft_to{lower,upper}.c \
+		ft_lst{add,del,delone,iter,map,new}.c \
+		ft_is{alnum,alpha,ascii,blank,digit,lower,num,prime,print,space,upper}.c
 
-OBJ = 	atoi.o      \
-        bzero.o     \
-        isalnum.o   \
-        isalpha.o   \
-        isascii.o   \
-        isdigit.o   \
-        isprint.o   \
-        itoa.o      \
-        lstadd.o    \
-        lstdel.o    \
-        lstdelone.o \
-        lstiter.o   \
-        lstmap.o    \
-        lstnew.o    \
-        memalloc.o  \
-        memccpy.o   \
-        memchr.o    \
-        memcmp.o    \
-        memcpy.o    \
-        memdel.o    \
-        memmove.o   \
-        memset.o    \
-        putchar.o   \
-        putchar_fd.o\
-        putendl.o   \
-        putendl_fd.o\
-        putnbr.o    \
-        putnbr_fd.o \
-        putstr.o    \
-        putstr_fd.o \
-        strcat.o    \
-        strchr.o    \
-        strcmp.o    \
-        strcpy.o    \
-        strcrl.o    \
-        strdel.o    \
-        strdup.o    \
-		strequ.o    \
-        striter.o   \
-        striteri.o  \
-        strjoin.o   \
-        strlcat.o   \
-        strlen.o    \
-        strmap.o    \
-        strmapi.o   \
-        strncat.o   \
-        strncmp.o   \
-        strncpy.o   \
-        strnequ.o   \
-        strnew.o    \
-        strnstr.o   \
-        strrchr.o   \
-        strsplit.o  \
-        strstr.o    \
-        strsub.o    \
-        strtrim.o   \
-        tolower.o   \
-        toupper.o	\
-		strappend.o
+OBJ = $(SRC:.c=.o)
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME):
-	@echo "Compiling .."
-	@gcc -Wall -Wextra -Werror -c $(SRC) -I $(HEAD) && ar rc $(NAME) $(OBJ)
-	@echo "Done !"
+	$(NAME):
+	@$(CC) $(CFLAGS) -c $? $(SRC)
+	@ar rc $(NAME) $? $(OBJ)
+@ranlib $(NAME)
+	@echo "\033[32mBuilt library.\033[0m"
 
-clean:
-	@echo "Remove .o  ..."
-	@/bin/rm -f $(OBJ)
-	@echo "Done !"
+	clean:
+@/bin/rm -f $(OBJ)
+	@echo "\033[32mCleaned up object files.\033[0m"
 
-fclean: clean
-	@echo "Remove lib ..."
-	@/bin/rm -f $(NAME)
-	@echo "Done !" 
+	fclean: clean
+@/bin/rm $(NAME)
+	@echo "\033[32mCleaned up compiled files.\033[0m"
 
-re: fclean all
+	re: fclean all
