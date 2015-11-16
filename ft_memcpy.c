@@ -1,3 +1,5 @@
+#include "libft.h"
+
 void	*ft_memcpy(void *s1, const void *s2, int n)
 {
 	unsigned char	*str1;

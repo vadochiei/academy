@@ -1,3 +1,5 @@
+#include "libft.h"
+
 char *ft_strchr(char *src, char c)
 {
 	int i = 0;
