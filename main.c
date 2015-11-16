@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
@@ -11,4 +12,18 @@ int main()
 	//printf("%s", ft_memcpy(s1, s2, 3));
 	//ft_memcpy(s1, s2, 3);
 	memcpy(s1, s2, 3);
+=======
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+
+void ft_bzero(void *s, long n);
+
+int main()
+{
+	char a[] = "Ana are mere galbene si verzi.";
+
+	ft_bzero(a, 10);
+	return (0);
+>>>>>>> 98e08c27c3e7bf6800b37d190e603243da32cf28
 }
